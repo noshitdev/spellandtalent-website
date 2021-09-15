@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://noshit.dev/spellandtalent',
+    siteUrl: 'https://spellandtalent.noshit.dev',
     title: 'Spell & Talent',
   },
   plugins: [

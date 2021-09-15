@@ -1,32 +1,43 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "Spell & Talents",
+    siteUrl: 'https://noshit.dev/spellandtalent',
+    title: 'Spell & Talent',
   },
   plugins: [
-    "gatsby-plugin-image",
+    'gatsby-plugin-sass',
+    'gatsby-plugin-root-import',
+    'gatsby-plugin-image',
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: "G-KNLCX1BXW1",
+        trackingId: 'G-KNLCX1BXW1',
       },
     },
-    "gatsby-plugin-react-helmet",
+    'gatsby-plugin-react-helmet',
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: "src/images/icon.png",
+        icon: 'src/images/icon.png',
       },
     },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "images",
-        path: "./src/images/",
+        name: 'images',
+        path: './src/images/',
       },
-      __key: "images",
+      __key: 'images',
     },
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: [
+          'EB+Garamond:ital,wght@0,400;0,700;1,400;1,700',
+        ],
+        display: 'swap'
+      }
+    }
   ],
-};
+}

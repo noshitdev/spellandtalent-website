@@ -1,0 +1,27 @@
+.button__inline {
+  a {
+    color: white;
+    font-size: 22px;
+    display: block;
+    text-decoration: underline;
+  }
+
+  p {
+    color: #8e8e8e;
+    margin-top: 0px;
+  }
+}
+
+.button {
+  display: block;
+  border: 3px solid #fff;
+  margin: auto;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.button__active {
+  background-color: white;
+  color: #8e8e8e;
+}

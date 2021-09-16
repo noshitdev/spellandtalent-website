@@ -9,7 +9,7 @@ export const questions = [
         It's a collection of 16,000 unique skills. 
         </p>
         <p>
-        4,000 are currently reserved for the Loot project and 4,000 for the N project holders. They can claim them for just gas. The rest 7,700 can be minted for 0,01 ETH and gas fee. The remaining 300 bags are reserved for the developers and maintainers.
+        4,000 are currently reserved for the Loot project and 4,000 for the N project holders. They can claim them for just gas. The rest 7,700 can be minted for 0,02 ETH and gas fee. The remaining 300 bags are reserved for the developers and maintainers.
         </p>
         <p>
         The drawn skills are a randomly generated set of spells and talents, which ensures uniqueness. They do not always contain the same number of talents and spells. It is up to us how we want to classify them. We don't want to create any rules, restrictions and limitations. We are free to use and combine them however we want. Let our imagination speak and build something great and unique by mixing all of the Loot related NFTs.

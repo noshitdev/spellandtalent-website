@@ -56,12 +56,19 @@ const Claim = () => {
             variant={Button.VARIANT_BUTTON} 
           />
         </div>
-        <div>
-          <input disabled={!selectedType} name='ids' type='text' ref={myinput => setInputField(myinput)} />
+        <div className={styles.claim__btn__container}>
+          <input 
+            disabled={!selectedType} 
+            name="ids" 
+            type="text"
+            placeholder="NFT ID"
+            ref={myinput => setInputField(myinput)} 
+          />
           <Button 
+            disabled={!selectedType}
             label="Claim Spell & Talent"
             onClick={handleClaim}
-            variant={Button.VARIANT_BUTTON} 
+            variant={Button.VARIANT_BUTTON}
           />
         </div>
       </div>
@@ -91,7 +98,7 @@ const Claim = () => {
       </div>
 
       <div className={styles.claim__cta}>
-        <div className={styles.connect__container}>
+        <div className={styles.claim__btn__container}>
           <Button label={btnLabel} onClick={handleConnectWallet} variant={Button.VARIANT_BUTTON} />
         </div>
         {walletConnected && renderConnectedWalletContent()}

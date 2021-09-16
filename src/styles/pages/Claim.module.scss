@@ -16,7 +16,7 @@
   }
 }
 
-.connect__container {
+.claim__btn__container {
   width: 50%;
   margin: auto;
 }
@@ -30,6 +30,17 @@
 
   p {
     margin-top: 20px;
+  }
+
+  input {
+    font-family: "EB Garamond", serif, sans-serif;
+    font-size: 25px;
+    color: #8e8e8e;
+    height: 30px;
+    border: 1px solid white;
+    padding: 5px;
+    outline-width: 0;
+    margin-bottom: 25px;
   }
 }
 

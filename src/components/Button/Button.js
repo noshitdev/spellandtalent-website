@@ -5,7 +5,7 @@ import * as styles from 'styles/components/Button.module.scss'
 export const VARIANT_INLINE = 'inline'
 export const VARIANT_BUTTON = 'butto'
 
-const Button = ({ active, info, label, link, variant = VARIANT_INLINE, onClick }) => {
+const Button = ({ active, disabled, info, label, link, variant = VARIANT_INLINE, onClick }) => {
   if (VARIANT_INLINE === variant) {
     return (
       <div className={styles.button__inline}>
@@ -22,9 +22,18 @@ const Button = ({ active, info, label, link, variant = VARIANT_INLINE, onClick }
     combinedStyles.push(styles.button__active)
   }
 
+  if (disabled) {
+    combinedStyles.push(styles.button__disabled)
+  }
+
   return (
     <div>
-      <a className={combinedStyles.join(' ')} href={link} onClick={onClick}>{label}</a>
+      <button 
+        className={combinedStyles.join(' ')} 
+        disabled={disabled}
+        onClick={onClick}>
+        {label}
+      </button>
       {info && (
         <p>{info}</p>
       )}

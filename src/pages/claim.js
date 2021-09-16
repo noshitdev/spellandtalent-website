@@ -14,6 +14,7 @@ const TYPE_LOOT = 'loot'
 const Claim = () => {
   const [ selectedType, setSelectedType ] = useState()
   const [ walletConnected, setWalletConnected ] = useState(false)
+  const [ inputField, setInputField ] = useState()
 
   const btnLabel = walletConnected ? 'Disconnect Wallet' : 'Connect Wallet'
 
@@ -30,6 +31,10 @@ const Claim = () => {
 
   const handleConnectWallet = () => {
     setWalletConnected(!walletConnected)
+  }
+
+  const handleClaim = () => {
+    console.log(inputField.value);
   }
 
   const renderConnectedWalletContent = () => {
@@ -51,6 +56,14 @@ const Claim = () => {
             variant={Button.VARIANT_BUTTON} 
           />
         </div>
+        <div>
+          <input disabled={!selectedType} name='ids' type='text' ref={myinput => setInputField(myinput)} />
+          <Button 
+            label="Claim Spell & Talent"
+            onClick={handleClaim}
+            variant={Button.VARIANT_BUTTON} 
+          />
+        </div>
       </div>
     )
   }
@@ -63,7 +76,7 @@ const Claim = () => {
         <br />
         {/* CTA Description */}
         <p>
-          Spell and Talent NFT can be claimed once by first 4,000 <a href='https://www.lootproject.com/' target='_blank'>#loot </a> project NFT
+          Spell & Talent NFT can be claimed once by first 4,000 <a href='https://www.lootproject.com/' target='_blank'>#loot </a> project NFT
           <br />and 4,000 <a href='https://twitter.com/the_n_project_' target='_blank'>#n </a> project NFT.
           <br /> 
         </p>
@@ -72,7 +85,7 @@ const Claim = () => {
       <div className={styles.claim__cta}>
         {/* CTA title */}
         <p>
-          Spell and Talent combined with <a href='https://www.lootproject.com/' target='_blank'>Loot</a>, <a href='https://twitter.com/the_n_project_' target='_blank'>N</a>, <a href='https://mapsproject.xyz/' target='_blank'>Maps</a> project and other related can be used as building blocks to create unique stories.
+          Spell & Talent combined with <a href='https://www.lootproject.com/' target='_blank'>Loot</a>, <a href='https://twitter.com/the_n_project_' target='_blank'>N</a>, <a href='https://mapsproject.xyz/' target='_blank'>Maps</a> project and other related can be used as building blocks to create unique stories.
           Let our imagination speak and build something great by mixing all of them into one set.
         </p>
       </div>

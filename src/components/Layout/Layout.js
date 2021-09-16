@@ -7,7 +7,7 @@ const Head = ({ title }) => {
   return (
     <Helmet>
       {/* Primary Meta Tags */}
-      <title>Spell and Talent - {title}</title>
+      <title>Spell & Talent - {title}</title>
       <meta name='title' content='Spell & Talent' />
       <meta
         name='description'
@@ -82,7 +82,7 @@ const Footer = () => {
         .
       </p>
       <p>
-        The code of this website is available on our {' '}
+        The code of this website is available on the {' '}
         <a
           href='https://github.com/noshitdev'
           target='_blank'

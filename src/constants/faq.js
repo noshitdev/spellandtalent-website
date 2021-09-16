@@ -31,7 +31,7 @@ export const questions = [
         It is not just about ourselves, our friends can also help by possessing the other set of skills. Together we are stronger!
         </p>
         <p>
-        The connection with N Project can provide us with even greater power. We can use numbers to increase the effectiveness of the Spell and Talent bags. Although, this is just a vision and the beauty is that the connection can be used however your imagination tells you! Pure freedom!
+        The connection with N Project can provide us with even greater power. We can use numbers to increase the effectiveness of the Spell & Talent bags. Although, this is just a vision and the beauty is that the connection can be used however your imagination tells you! Pure freedom!
         </p>
       </div>
     )

@@ -27,12 +27,12 @@ const Home = () => {
     return shuffled.slice(0, 1);
   }
 
-  const renderBag = (bags, name) => {
+  const renderBag = (bags, name, address) => {
     return (
       <React.Fragment>
         {getRandomBag(bags).map(({ id, attributes }, i) => (
           <a
-            href={`https://opensea.io/assets/0xff9c1b15b16263c61d017ee9f65c50e4ae0113d7/${id}`}
+            href={`https://opensea.io/assets/${address}/${id}`}
             target='_blank'
             rel='noopener noreferrer'
             key={i}
@@ -61,9 +61,9 @@ const Home = () => {
     return (
       <div className={styles.home__feature}>
         <span>Example Mixes:</span>
-        {renderBag(LOOT_BAGS, 'Loot')}
+        {renderBag(LOOT_BAGS, 'Loot', '0xff9c1b15b16263c61d017ee9f65c50e4ae0113d7')}
         {renderBag(ST_BAGS, 'Spell & Talent')}
-        {renderBag(N_BAGS, 'N Project')}
+        {renderBag(N_BAGS, 'N Project', '0x05a46f1e545526fb803ff974c790acea34d1f2d6')}
       </div>
     )
   }
@@ -82,7 +82,7 @@ const Home = () => {
             Spell & Talent is randomly generated skills for adventurers.
             <br />Combine them with any other <a href='https://www.lootproject.com/' target='_blank'>#loot </a> or <a href='https://twitter.com/the_n_project_' target='_blank'>#n </a>
             ... and gain power beyond the imagination!
-            <br />Mixing them together let you overcome all the difficulties and create the gratest stories.
+            <br />Mixing them together let you overcome all the difficulties and create the greatest stories.
           </p>
         </div>
 
@@ -90,11 +90,11 @@ const Home = () => {
         <div className={styles.home__feature}>
           <Button 
             info="Be hurry! Only first 4,000 holders are eligible to claim free Spell & Talent!"
-            label="Loot and N Project holders! Claim your Spell and Talent!" 
+            label="Loot and N Project holders! Claim your Spell & Talent!" 
             link="/claim" 
           />
           <br />
-          <Button label="Adventurers! Mint your Spell and Talent!" link="/claim" />
+          <Button label="Adventurers! Mint your Spell & Talent!" link="/claim" />
         </div>
 
         {/* Sample mixes */}

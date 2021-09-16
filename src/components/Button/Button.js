@@ -22,10 +22,6 @@ const Button = ({ active, disabled, info, label, link, variant = VARIANT_INLINE,
     combinedStyles.push(styles.button__active)
   }
 
-  if (disabled) {
-    combinedStyles.push(styles.button__disabled)
-  }
-
   return (
     <div>
       <button 

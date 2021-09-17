@@ -25,7 +25,7 @@ const Claim = () => {
       })
     } catch (e) {
       // TODO show popup "err: insufficient funds for gas * price + value: address 0xaFf6759a267582Be5c3fd5f6F228a8B8C9fC52dD have 7039098081794652 want 10000000000000000 (supplied gas 14995852)"
-      console.error('mintErrorMint', e)
+      console.error('mintErrorMint 123', e)
     }
 
     return contract.methods[name](numberOfTokensOrTokenId).send({
@@ -43,15 +43,15 @@ const Claim = () => {
     let price = 0
 
     if ('mint' === type) {
-      value = parseInt(e.target.value.value)
-      price = value * (await contract.methods.price(value));
+      value = parseInt(value)
+      price = parseInt(await contract.methods.price(value).call());
     }
 
     try {
       await mint(type, price, value)
     } catch (e) {
       // TODO RPC Error: MetaMask Tx Signature: User denied transaction signature.
-      console.error('mintErrorMint', e)
+      console.error('mintErrorMint222', e)
     }
   }
 

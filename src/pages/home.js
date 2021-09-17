@@ -80,7 +80,7 @@ const Home = () => {
           {/* CTA Description */}
           <p>
             Spell & Talent is randomly generated skills for adventurers.
-            <br />Combine them with any other <a href='https://www.lootproject.com/' target='_blank'>#loot </a> or <a href='https://twitter.com/the_n_project_' target='_blank'>#n </a>
+            <br />Combine them with any other <a href='https://www.lootproject.com/' target='_blank' rel="noreferrer">#loot </a> or <a href='https://twitter.com/the_n_project_' target='_blank' rel="noreferrer">#n </a>
             ... and gain power beyond the imagination!
             <br />Mixing them together let you overcome all the difficulties and create the greatest stories.
           </p>

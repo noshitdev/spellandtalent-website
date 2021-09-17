@@ -83,8 +83,8 @@ const Claim = () => {
         <br />
         {/* CTA Description */}
         <p>
-          Spell & Talent NFT can be claimed once by first 4,000 <a href='https://www.lootproject.com/' target='_blank'>#loot </a> project NFT
-          <br />and 4,000 <a href='https://twitter.com/the_n_project_' target='_blank'>#n </a> project NFT.
+          Spell & Talent NFT can be claimed once by first 4,000 <a href='https://www.lootproject.com/' target='_blank' rel="noreferrer">#loot </a> project NFT
+          <br />and 4,000 <a href='https://twitter.com/the_n_project_' target='_blank' rel="noreferrer">#n </a> project NFT.
           <br /> 
         </p>
       </div>
@@ -92,7 +92,7 @@ const Claim = () => {
       <div className={styles.claim__cta}>
         {/* CTA title */}
         <p>
-          Spell & Talent combined with <a href='https://www.lootproject.com/' target='_blank'>Loot</a>, <a href='https://twitter.com/the_n_project_' target='_blank'>N</a>, <a href='https://mapsproject.xyz/' target='_blank'>Maps</a> project and other related can be used as building blocks to create unique stories.
+          Spell & Talent combined with <a href='https://www.lootproject.com/' target='_blank' rel="noreferrer">Loot</a>, <a href='https://twitter.com/the_n_project_' target='_blank' rel="noreferrer">N</a>, <a href='https://mapsproject.xyz/' target='_blank' rel="noreferrer">Maps</a> project and other related can be used as building blocks to create unique stories.
           Let our imagination speak and build something great by mixing all of them into one set.
         </p>
       </div>

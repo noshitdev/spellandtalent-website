@@ -2,13 +2,13 @@
 
 ## Run Locally
 
-```bash
-yarn run dev
+```
+yarn --dev
+yarn develop
 ```
 
 ## Deploy
 
-```bash
-yarn --dev
-yarn deploy
+```
+Publishing page is automated via GitHub Actions for the given branches names in the `.github/workflows/publish.yml`
 ```

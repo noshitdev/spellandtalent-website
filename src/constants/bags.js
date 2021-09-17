@@ -129,8 +129,8 @@ export const N_BAGS = [
 
 export const ST_BAGS = [
   {
-    "id": 6969,
-    "attributes": [
+    id: 6969,
+    attributes: [
       "Shield Strike",
       "Shield Bash",
       "Brutal Clap",
@@ -142,8 +142,8 @@ export const ST_BAGS = [
     ]
   },
   {
-    "id": 2376,
-    "attributes": [
+    id: 2376,
+    attributes: [
       "Holy Sword",
       "Lightning Storm",
       "Wave Of Heal",
@@ -155,8 +155,8 @@ export const ST_BAGS = [
     ]
   },
   {
-    "id": 8988,
-    "attributes": [
+    id: 8988,
+    attributes: [
       "Negative Energy",
       "Lightning Storm",
       "Wave Of Heal",
@@ -168,8 +168,8 @@ export const ST_BAGS = [
     ]
   },
   {
-    "id": 10476,
-    "attributes": [
+    id: 10476,
+    attributes: [
       "Holy Sword",
       "Shield Strike",
       "Wave Of Heal",
@@ -181,8 +181,8 @@ export const ST_BAGS = [
     ]
   },
   {
-    "id": 15454,
-    "attributes": [
+    id: 15454,
+    attributes: [
       "Shield Strike",
       "Light Heal",
       "Magic Shield",
@@ -194,8 +194,8 @@ export const ST_BAGS = [
     ]
   },
   {
-    "id": 199,
-    "attributes": [
+    id: 199,
+    attributes: [
       "Summon Rare Creature",
       "Fire Missiles",
       "Heavy shot",
@@ -207,8 +207,8 @@ export const ST_BAGS = [
     ]
   },
   {
-    "id": 13131,
-    "attributes": [
+    id: 13131,
+    attributes: [
       "Lightning Storm",
       "Light Heal",
       "Sacrifice",

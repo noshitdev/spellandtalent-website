@@ -108,20 +108,20 @@ const Mint = ({ type }) => {
           message('You denied transaction signature.');
           break;
         case e.message.includes('E:TOKEN_EXISTS'):
-          message('S&T token was minted on this token ID.');
+          message('S&T token was minted for this token ID.');
           break;
         case e.message.includes('E:MAX_PURCHASE'):
-          message('You can only mint 20 tokens at a time.');
+          message('You can only mint 50 tokens at once.');
           break;
         case e.message.includes('nonexistent token'):
         case e.message.includes('E:INVALID_TOKEN'):
           message('Token ID not found.');
           break;
         case e.message.includes('E:INVALID_SUPPLY'):
-          message('Purchase would exceed max supply of tokens.');
+          message('Purchase would exceed the max supply of the tokens.');
           break;
         case e.message.includes('E:NO_MORE'):
-          message(`Tokens for ${nameFromMethod(method)} owners have been distributed but you can still to claim in other way.`);
+          message(`There are no more free available tokens for ${nameFromMethod(method)} holders. 4000 already distributed. You can still mint them for 0,01 ETH.`);
           break;
         case e.message.includes('E:WRONG_OWNER'):
           message('You are not owner of the Token Id.');
@@ -144,7 +144,7 @@ const Mint = ({ type }) => {
         message = 'Connection error: the user rejected the activation'
         break;
       case error?.code === -32002:
-        message = 'Request Permissions already pending'
+        message = 'Please wait, your wallet is already trying to connect to the website...'
         break;
       case error?.name:
         message = 'Request Permissions already pending'

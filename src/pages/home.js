@@ -28,12 +28,14 @@ const Home = () => {
   }
 
   const renderBag = (bags, name, address) => {
+    const getLink = (id) => address ? `https://opensea.io/assets/${address}/${id}` : '/'
+
     return (
       <React.Fragment>
         {getRandomBag(bags).map(({ id, attributes }, i) => (
           <a
-            href={`https://opensea.io/assets/${address}/${id}`}
-            target='_blank'
+            href={getLink(id)}
+            target={address ? '_blank' : ''} 
             rel='noopener noreferrer'
             key={i}
             className={styles.home__bag}

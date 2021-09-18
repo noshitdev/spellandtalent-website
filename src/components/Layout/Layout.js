@@ -16,23 +16,23 @@ const Head = ({ title }) => {
 
       {/* OG + Faceook */}
       <meta property='og:type' content='website' />
-      <meta property='og:url' content='https://www.noshit.dev/' />
+      <meta property='og:url' content='https://www.spellandtalent.noshit.dev/' />
       <meta property='og:title' content='Spell & Talent' />
       <meta
         property='og:description'
         content='Spell & Talent is randomized generated power for adventurers! Combine them with other nft...and gain powers beyond imagination!'
       />
-      <meta property='og:image' content='https://www.noshit.dev/meta.png' />
+      <meta property='og:image' content='https://www.spellandtalent.noshit.dev/meta.png' />
 
       {/* Twitter */}
       <meta property='twitter:card' content='summary_large_image' />
-      <meta property='twitter:url' content='https://www.noshit.dev/spellandtalent' />
+      <meta property='twitter:url' content='https://www.spellandtalent.noshit.dev/' />
       <meta property='twitter:title' content='Spell & Talent' />
       <meta
         property='twitter:description'
         content='Spell & Talent is randomized generated power for adventurers! Combine them with other nft...and gain powers beyond imagination!'
       />
-      <meta property='twitter:image' content='https://www.noshit.dev/spellandtalent/meta.png' />
+      <meta property='twitter:image' content='https://www.spellandtalent.noshit.dev/meta.png' />
     </Helmet>
   )
 }

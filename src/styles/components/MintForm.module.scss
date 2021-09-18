@@ -16,6 +16,50 @@
   }
 }
 
+.claim__btn__container {
+  margin: 20px auto;
+
+  span {
+    margin-right: 10px;
+    color: #8e8e8e;
+    font-size: 22px;
+  }
+}
+
+.claim__feature {
+  margin-top: 20px;
+   
+  p:first-of-type {
+    font-size: 18px;
+  }
+
+  p {
+    margin-top: 20px;
+  }
+
+  input {
+    font-family: "EB Garamond", serif, sans-serif;
+    font-size: 25px;
+    color: #8e8e8e;
+    height: 30px;
+    border: 1px solid white;
+    padding: 5px;
+    outline-width: 0;
+    margin-bottom: 25px;
+  }
+}
+
+.claim__radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    padding: 20px;
+    margin: 5px;
+  }
+}
+
 // Responsive
 @media screen and (max-width: 850px) {
   .home__cta {

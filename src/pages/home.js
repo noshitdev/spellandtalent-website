@@ -89,12 +89,12 @@ const Home = () => {
         {/* Claim */}
         <div className={styles.home__feature}>
           <Button 
-            info="Be hurry! Only first 4,000 holders are eligible to claim free Spell & Talent!"
+            info="Be hurry! Only first 8,000 holders are eligible to claim free Spell & Talent!"
             label="Loot and N Project holders! Claim your Spell & Talent!" 
             link="/claim" 
           />
           <br />
-          <Button label="Adventurers! Mint your Spell & Talent!" link="/claim" />
+          <Button label="Adventurers! Mint your Spell & Talent!" link="/mint" />
         </div>
 
         {/* Sample mixes */}

@@ -40,8 +40,9 @@ const Head = ({ title }) => {
 const Header = () => {
   const pathname = '/'
   const links = [
+    { name: 'Claim for Loot & N Holders', path: '/claim' },
+    { name: 'Mint', path: '/mint' },
     { name: 'FAQ', path: '/faq' },
-    { name: 'Claim', path: '/claim' },
   ]
 
   return (

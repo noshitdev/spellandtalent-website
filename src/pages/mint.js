@@ -3,18 +3,17 @@ import { Layout, MintForm } from 'components'
 
 import * as styles from 'styles/pages/Claim.module.scss'
 
-// Claim page
-const Claim = () => {
+const Mint = () => {
   return (
     <Layout title='Claim S&T'>
       <div className={styles.claim__cta}>
         {/* CTA title */}
-        <h1>Claim your S&T</h1>
+        <h1>Mint your S&T</h1>
         <br />
         {/* CTA Description */}
         <p>
-          Spell & Talent NFT can be claimed once by first 4,000 <a href='https://www.lootproject.com/' target='_blank' rel="noreferrer">#loot </a> project NFT
-          <br />and 4,000 <a href='https://twitter.com/the_n_project_' target='_blank' rel="noreferrer">#n </a> project NFT. You only have to pay the gas fee.
+          You can mint the Spell & Talent token just for <b>0,01 ETH</b> and the gas fee. The maximum number of Spell & Talent you can mint at once is <b>50</b>. 
+          See our <a href="/faq" target='_blank' rel="noreferrer">faq </a>section for more details.
           <br />
         </p>
       </div>
@@ -26,10 +25,9 @@ const Claim = () => {
           Let our imagination speak and build something great by mixing all of them into one set.
         </p>
       </div>
-
-      <MintForm type={MintForm.TYPE_CLAIM} />
+      <MintForm type={MintForm.TYPE_MINT} />
     </Layout>
   )
 }
 
-export default Claim
+export default Mint

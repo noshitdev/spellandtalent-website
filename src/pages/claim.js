@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import useWallet, { ConnectionRejectedError } from 'use-wallet'
 import Web3 from 'web3'
 import { Button, Layout } from 'components'
@@ -7,26 +7,67 @@ import * as styles from 'styles/pages/Claim.module.scss'
 
 const config = process.env.PRODUCTION ? require('data/contract/mainnet.json') : require('data/contract/rinkeby.json')
 
+const nameFromMethod = (method) => {
+  const name = method.slice(0, -9)
+
+  return name.charAt(0).toUpperCase() + name.slice(1);
+}
+
+const message = (msg) => {
+  alert(msg);
+}
+
+const getAssetUrl = (tokenId) => {
+  return `https://${process.env.PRODUCTION ? '' : 'testnets.'}opensea.io/assets/${config.contractAddr}/${tokenId}`
+}
+
 // Claim page
 const Claim = () => {
   const wallet = useWallet()
   const { current: web3 } = useRef(new Web3(window.ethereum))
   const { current: contract } = useRef(new web3.eth.Contract(config.abi, config.contractAddr))
   const [isLoot, setIsLoot] = useState(true)
+  const [bags, setBags] = useState([])
+
+  useEffect(() => {
+    if (!wallet.account) {
+      return
+    }
+
+    const subscriber = contract.events.Transfer({
+      filter: { to: wallet.account },
+      fromBlock: 'latest'
+      // fromBlock: 0
+    })
+      .on('data', async ({ returnValues }) => {
+        const { tokenId } = returnValues
+        if (!tokenId) {
+          return
+        }
+
+        let tokenURI
+        try {
+          tokenURI = await contract.methods.tokenURI(tokenId).call()
+        } catch (e) {
+          console.error(e)
+          return
+        }
+
+        const json = atob(tokenURI.substring(29))
+        const result = JSON.parse(json)
+
+        setBags((bags) => [{ name: result.name, image: result.image, url: getAssetUrl(tokenId) }, ...bags])
+      })
+
+    return () => subscriber.unsubscribe()
+  }, [wallet.account, wallet.chainId, contract])
 
   const mint = async (name, price, numberOfTokensOrTokenId) => {
     const gasPrice = await web3.eth.getGasPrice()
-    let estimatedGas
-
-    try {
-      estimatedGas = await contract.methods[name](numberOfTokensOrTokenId).estimateGas({
-        value: price,
-        from: wallet.account
-      })
-    } catch (e) {
-      // TODO show popup "err: insufficient funds for gas * price + value: address 0xaFf6759a267582Be5c3fd5f6F228a8B8C9fC52dD have 7039098081794652 want 10000000000000000 (supplied gas 14995852)"
-      console.error('mintErrorMint 123', e)
-    }
+    const estimatedGas = await contract.methods[name](numberOfTokensOrTokenId).estimateGas({
+      value: price,
+      from: wallet.account
+    })
 
     return contract.methods[name](numberOfTokensOrTokenId).send({
       gas: parseInt(estimatedGas),
@@ -36,22 +77,56 @@ const Claim = () => {
     })
   }
 
-  const handleSubmit = (type) => async (e) => {
+  const handleSubmit = (method) => async (e) => {
     e.preventDefault()
+
+    if (parseInt(process.env.CHAIN_ID) !== wallet.chainId) {
+      message(`You are not on the ${process.env.CHAIN_NAME} network.`)
+      return
+    }
 
     let value = e.target.value.value
     let price = 0
 
-    if ('mint' === type) {
+    if ('mint' === method) {
       value = parseInt(value)
       price = parseInt(await contract.methods.price(value).call());
     }
 
     try {
-      await mint(type, price, value)
+      await mint(method, price, value)
     } catch (e) {
-      // TODO RPC Error: MetaMask Tx Signature: User denied transaction signature.
-      console.error('mintErrorMint222', e)
+      switch (true) {
+        case e.message.includes('insufficient funds'):
+        case e.message.includes('E:INVALID_ETH_VALUE'):
+          message('You don\'t have enough ETH on your wallet.');
+          break;
+        case e.message.includes('denied transaction'):
+          message('You denied transaction signature.');
+          break;
+        case e.message.includes('E:TOKEN_EXISTS'):
+          message('S&T token was minted on this token ID.');
+          break;
+        case e.message.includes('E:MAX_PURCHASE'):
+          message('You can only mint 20 tokens at a time.');
+          break;
+        case e.message.includes('nonexistent token'):
+        case e.message.includes('E:INVALID_TOKEN'):
+          message('Token ID not found.');
+          break;
+        case e.message.includes('E:INVALID_SUPPLY'):
+          message('Purchase would exceed max supply of tokens.');
+          break;
+        case e.message.includes('E:NO_MORE'):
+          message(`Tokens for ${nameFromMethod(method)} owners have been distributed but you can still to claim in other way.`);
+          break;
+        case e.message.includes('E:WRONG_OWNER'):
+          message('You are not owner of the Token Id.');
+          break;
+        default:
+          message('Unexpected error. Please refresh the page.');
+          break;
+      }
     }
   }
 
@@ -127,7 +202,7 @@ const Claim = () => {
           />
         </div>
         <form onSubmit={handleSubmit(isLoot ? 'lootOwnerMint' : 'nOwnerMint')}>
-          <input name="value" type="text" placeholder="NFT ID" required />
+          <input name="value" type="number" min="0" placeholder="NFT ID" required />
 
           <Button
             label="Claim Spell & Talent"
@@ -181,6 +256,14 @@ const Claim = () => {
         {wallet.status === 'connected' && renderConnected()}
         {wallet.status === 'connecting' && renderConnecting()}
         {wallet.status === 'disconnected' && renderDisconnected()}
+      </div>
+
+      <div className={styles.claim__cta}>
+        {bags.map(({ image, name, url }) => (
+          <a key={name} href={url} target="_blank" rel="noopener noreferrer">
+            <img src={image} />
+          </a>
+        ))}
       </div>
     </Layout>
   )

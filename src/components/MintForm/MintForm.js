@@ -7,6 +7,7 @@ import * as styles from 'styles/components/MintForm.module.scss'
 import Button from './../Button'
 
 const config = process.env.PRODUCTION ? require('data/contract/mainnet.json') : require('data/contract/rinkeby.json')
+const isBrowser = () => typeof window !== 'undefined'
 
 const nameFromMethod = (method) => {
   const name = method.slice(0, -9)
@@ -27,7 +28,8 @@ const TYPE_MINT = 'mint'
 
 const Mint = ({ type }) => {
   const wallet = useWallet()
-  const { current: web3 } = useRef(new Web3(window.ethereum))
+  const ref = typeof window !== `undefined` ? window.ethereum : null
+  const { current: web3 } = useRef(new Web3(ref))
   const { current: contract } = useRef(new web3.eth.Contract(config.abi, config.contractAddr))
   const [isLoot, setIsLoot] = useState(true)
   const [bags, setBags] = useState([])

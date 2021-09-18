@@ -7,7 +7,6 @@ import * as styles from 'styles/components/MintForm.module.scss'
 import Button from './../Button'
 
 const config = process.env.PRODUCTION ? require('data/contract/mainnet.json') : require('data/contract/rinkeby.json')
-const isBrowser = () => typeof window !== 'undefined'
 
 const nameFromMethod = (method) => {
   const name = method.slice(0, -9)
@@ -23,13 +22,14 @@ const getAssetUrl = (tokenId) => {
   return `https://${process.env.PRODUCTION ? '' : 'testnets.'}opensea.io/assets/${config.contractAddr}/${tokenId}`
 }
 
+const MAX_PURCHASE = process.env.MAX_PURCHASE
+
 const TYPE_CLAIM = 'claim'
 const TYPE_MINT = 'mint'
 
 const Mint = ({ type }) => {
   const wallet = useWallet()
-  const ref = typeof window !== `undefined` ? window.ethereum : null
-  const { current: web3 } = useRef(new Web3(ref))
+  const { current: web3 } = useRef(new Web3(typeof window !== `undefined` ? window.ethereum : undefined))
   const { current: contract } = useRef(new web3.eth.Contract(config.abi, config.contractAddr))
   const [isLoot, setIsLoot] = useState(true)
   const [bags, setBags] = useState([])
@@ -65,7 +65,7 @@ const Mint = ({ type }) => {
     })
 
     return () => subscriber.unsubscribe()
-  }, [wallet.account, wallet.chainId, contract])
+  }, [wallet.account, wallet.chainId])
 
   const mint = async (name, price, numberOfTokensOrTokenId) => {
     const gasPrice = await web3.eth.getGasPrice()
@@ -93,14 +93,15 @@ const Mint = ({ type }) => {
     let value = e.target.value.value
     let price = 0
 
-    if (TYPE_MINT === method) {
-      value = parseInt(value)
-      price = parseInt(await contract.methods.price(value).call());
-    }
-
     try {
+      if (TYPE_MINT === method) {
+        value = parseInt(value)
+        price = parseInt(await contract.methods.price(value).call());
+      }
+
       await mint(method, price, value)
     } catch (e) {
+      console.error(e)
       switch (true) {
         case e.message.includes('insufficient funds'):
         case e.message.includes('E:INVALID_ETH_VALUE'):
@@ -113,7 +114,7 @@ const Mint = ({ type }) => {
           message('S&T token was minted for this token ID.');
           break;
         case e.message.includes('E:MAX_PURCHASE'):
-          message('You can only mint 50 tokens at once.');
+          message(`You can only mint ${MAX_PURCHASE} tokens at once.`);
           break;
         case e.message.includes('nonexistent token'):
         case e.message.includes('E:INVALID_TOKEN'):
@@ -140,19 +141,27 @@ const Mint = ({ type }) => {
   }
 
   const renderError = (error) => {
+    console.error(error)
+
     let message = '';
     switch (true) {
       case error instanceof ConnectionRejectedError:
-        message = 'Connection error: the user rejected the activation'
+        message = 'You rejected the activation.'
+        break;
+      case error.message.includes('No Ethereum provider'):
+        message = 'You mast to install wallet extension.'
+        break;
+      case error.message.includes('Unsupported chain'):
+        message = `You are not on the ${process.env.CHAIN_NAME} network.`
         break;
       case error?.code === -32002:
         message = 'Please wait, your wallet is already trying to connect to the website...'
         break;
       case error?.name:
-        message = 'Request Permissions already pending'
+        message = error?.name
         break;
       default:
-        message = 'Error. Try refresh the page.'
+        message = 'Unexpected error. Try refresh the page.'
         break;
     }
 
@@ -169,7 +178,7 @@ const Mint = ({ type }) => {
     return (
       <div>
         <p>
-          Connecting to {wallet.connector}...
+          Connecting...
         </p>
       </div>
     )
@@ -184,7 +193,7 @@ const Mint = ({ type }) => {
           <div className={styles.claim__btn__container}>
             <form onSubmit={handleSubmit(TYPE_MINT)}>
               <span>Number of Spell & Talent NFTs you would like to mint:</span>
-              <input name="value" type="number" min="0" max={process.env.MAX_PURCHASE} defaultValue="50" required />
+              <input name="value" type="number" min="0" max={MAX_PURCHASE} defaultValue={MAX_PURCHASE} required />
               <Button
                 label="Mint Spell & Talent"
                 type="submit"
@@ -250,10 +259,11 @@ const Mint = ({ type }) => {
         {wallet.status === 'disconnected' && renderDisconnected()}
       </div>
 
-      <div className={styles.claim__cta}>
+      <div className={styles.claim__bags}>
         {bags.map(({ image, name, url }) => (
           <a key={name} href={url} target="_blank" rel="noopener noreferrer">
-            <img src={image} alt={name} />
+            <img src={image} alt={name} width="400" height="400" />
+            <span>{name}</span>
           </a>
         ))}
       </div>

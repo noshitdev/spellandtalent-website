@@ -1,6 +1,8 @@
+const config = process.env.PRODUCTION ? require('data/contract/mainnet.json') : require('data/contract/rinkeby.json')
+
 export const QUICK_LINKS = [
-  // { 
-  //   name: 'OpenSea', 
+  // {
+  //   name: 'OpenSea',
   //   url: 'https://opensea.io/collection/lootproject',
   // },
   {
@@ -9,6 +11,6 @@ export const QUICK_LINKS = [
   },
   {
     name: 'Contract',
-    url: '',
+    url: `https://${process.env.PRODUCTION ? '' : process.env.CHAIN_NAME + '.'}etherscan.io/address/${config.contractAddr}`,
   },
 ]

@@ -16,6 +16,20 @@
   }
 }
 
+.claim__bags {
+  padding: 15px 20px;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    margin: 0 5px 10px;
+
+    span {
+      display: block;
+    }
+  }
+}
+
 .claim__btn__container {
   margin: 20px auto;
 
@@ -28,7 +42,7 @@
 
 .claim__feature {
   margin-top: 20px;
-   
+
   p:first-of-type {
     font-size: 18px;
   }

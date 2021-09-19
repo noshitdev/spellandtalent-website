@@ -10,6 +10,10 @@ export const QUICK_LINKS = [
     url: 'https://twitter.com/TalentSpell',
   },
   {
+    name: 'Discord',
+    url: 'https://discord.gg/VVRkQrmdkb',
+  },
+  {
     name: 'Contract',
     url: `https://${process.env.PRODUCTION ? '' : process.env.CHAIN_NAME + '.'}etherscan.io/address/${config.contractAddr}`,
   },

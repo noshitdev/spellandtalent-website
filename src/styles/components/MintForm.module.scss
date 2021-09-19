@@ -1,0 +1,103 @@
+.claim__cta {
+  max-width: 800px;
+  margin: 0px auto;
+  padding: 15px 20px;
+  text-align: center;
+
+  h1 {
+    font-size: 5rem;
+    margin: 15px 0px 0px 0px;
+  }
+
+  p {
+    color: #8e8e8e;
+    font-size: 22px;
+    margin: 0px;
+  }
+}
+
+.claim__bags {
+  padding: 15px 20px;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    margin: 0 5px 10px;
+
+    span {
+      display: block;
+    }
+  }
+}
+
+.claim__btn__container {
+  margin: 20px auto;
+
+  span {
+    margin-right: 10px;
+    color: #8e8e8e;
+    font-size: 22px;
+  }
+}
+
+.claim__feature {
+  margin-top: 20px;
+
+  p:first-of-type {
+    font-size: 18px;
+  }
+
+  p {
+    margin-top: 20px;
+  }
+
+  input {
+    font-family: "EB Garamond", serif, sans-serif;
+    font-size: 25px;
+    color: #8e8e8e;
+    height: 30px;
+    border: 1px solid white;
+    padding: 5px;
+    outline-width: 0;
+    margin-bottom: 25px;
+  }
+}
+
+.claim__radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    padding: 20px;
+    margin: 5px;
+  }
+}
+
+// Responsive
+@media screen and (max-width: 850px) {
+  .home__cta {
+    p {
+      br {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .home__bag_attributes {
+    background-color: black;
+    width: 300px;
+    height: 300px;
+    position: relative;
+
+    ul {
+      li {
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

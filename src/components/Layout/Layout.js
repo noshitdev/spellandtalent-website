@@ -7,32 +7,32 @@ const Head = ({ title }) => {
   return (
     <Helmet>
       {/* Primary Meta Tags */}
-      <title>Spell and Talent - {title}</title>
+      <title>Spell & Talent - {title}</title>
       <meta name='title' content='Spell & Talent' />
       <meta
         name='description'
-        content='Spell & Talent is randomized generated power for adventurers! Combine them with other #loot...and gain powers beyond imagination!'
+        content='Spell & Talent is randomized generated power for adventurers! Combine them with other nft...and gain powers beyond imagination!'
       />
 
       {/* OG + Faceook */}
       <meta property='og:type' content='website' />
-      <meta property='og:url' content='https://www.noshit.dev/' />
+      <meta property='og:url' content='https://www.spellandtalent.noshit.dev/' />
       <meta property='og:title' content='Spell & Talent' />
       <meta
         property='og:description'
-        content='Spell & Talent is randomized generated power for adventurers! Combine them with other #loot...and gain powers beyond imagination!'
+        content='Spell & Talent is randomized generated power for adventurers! Combine them with other nft...and gain powers beyond imagination!'
       />
-      <meta property='og:image' content='https://www.noshit.dev/meta.png' />
+      <meta property='og:image' content='https://www.spellandtalent.noshit.dev/meta.png' />
 
       {/* Twitter */}
       <meta property='twitter:card' content='summary_large_image' />
-      <meta property='twitter:url' content='https://www.noshit.dev/spellandtalent' />
+      <meta property='twitter:url' content='https://www.spellandtalent.noshit.dev/' />
       <meta property='twitter:title' content='Spell & Talent' />
       <meta
         property='twitter:description'
-        content='Spell & Talent is randomized generated power for adventurers! Combine them with other #loot...and gain powers beyond imagination!'
+        content='Spell & Talent is randomized generated power for adventurers! Combine them with other nft...and gain powers beyond imagination!'
       />
-      <meta property='twitter:image' content='https://www.noshit.dev/spellandtalent/meta.png' />
+      <meta property='twitter:image' content='https://www.spellandtalent.noshit.dev/meta.png' />
     </Helmet>
   )
 }
@@ -40,6 +40,8 @@ const Head = ({ title }) => {
 const Header = () => {
   const pathname = '/'
   const links = [
+    { name: 'Claim for Loot & N Holders', path: '/claim' },
+    { name: 'Mint', path: '/mint' },
     { name: 'FAQ', path: '/faq' },
   ]
 
@@ -70,15 +72,25 @@ const Footer = () => {
   return (
     <div className={styles.footer}>
       <p>
-        This website is an {' '}
+        This website has been inspired by an open-source {' '}
+        <a
+          href='https://www.lootproject.com/'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          loot project
+        </a>
+        .
+      </p>
+      <p>
+        The code of this website is available on the {' '}
         <a
           href='https://github.com/noshitdev'
           target='_blank'
           rel='noopener noreferrer'
         >
-          open-source
+         github. 
         </a>
-        {' '}project.
       </p>
     </div>
   )

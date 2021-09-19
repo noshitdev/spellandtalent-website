@@ -1,0 +1,38 @@
+.button__inline {
+  a {
+    color: white;
+    font-size: 22px;
+    display: block;
+    text-decoration: underline;
+  }
+
+  p {
+    color: #8e8e8e;
+    margin-top: 0px;
+  }
+}
+
+.button {
+  display: block;
+  border: 3px solid #fff;
+  margin: auto;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  background: transparent;
+  color: white;
+  margin: 0 auto 20px auto;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.button[disabled] {
+  opacity: 0.3;
+}
+
+.button__active {
+  background-color: white;
+  color: #8e8e8e;
+}

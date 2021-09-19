@@ -65,6 +65,18 @@
   height: 400px;
   position: relative;
 
+  .home__bag_project {
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+    opacity: 0.1;
+    text-align: center;
+
+    span {
+      font-size: 50px;      
+    }
+  }
+
   > span {
     position: absolute;
     right: 10px;

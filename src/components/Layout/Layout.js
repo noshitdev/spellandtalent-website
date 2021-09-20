@@ -35,7 +35,7 @@ const Head = ({ title }) => {
       <meta property='twitter:image' content='https://www.spellandtalent.noshit.dev/meta.png' />
 
       {/* Google */}
-      <meta name="google-site-verification" content="zG_J8sUptIazra8oWtoEAxp8Cr6mnxBDIvlDO0Zt2Yw" />
+      <meta name="google-site-verification" content="W8qe0eedvtSFd4V9dzwsjdyDRReOVWnpJ9A35oycuPs" />
     </Helmet>
   )
 }

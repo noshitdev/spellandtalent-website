@@ -33,6 +33,9 @@ const Head = ({ title }) => {
         content='Spell & Talent is randomized generated power for adventurers! Combine them with other nft...and gain powers beyond imagination!'
       />
       <meta property='twitter:image' content='https://www.spellandtalent.noshit.dev/meta.png' />
+
+      {/* Google */}
+      <meta name="google-site-verification" content="zG_J8sUptIazra8oWtoEAxp8Cr6mnxBDIvlDO0Zt2Yw" />
     </Helmet>
   )
 }
@@ -89,7 +92,7 @@ const Footer = () => {
           target='_blank'
           rel='noopener noreferrer'
         >
-         github. 
+         github.
         </a>
       </p>
     </div>

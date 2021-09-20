@@ -1,10 +1,10 @@
 const config = process.env.PRODUCTION ? require('data/contract/mainnet.json') : require('data/contract/rinkeby.json')
 
 export const QUICK_LINKS = [
-  // {
-  //   name: 'OpenSea',
-  //   url: 'https://opensea.io/collection/lootproject',
-  // },
+  {
+    name: 'OpenSea',
+    url: 'https://opensea.io/collection/spellandtalent',
+  },
   {
     name: 'Twitter',
     url: 'https://twitter.com/TalentSpell',

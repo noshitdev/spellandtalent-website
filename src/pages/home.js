@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 import { QUICK_LINKS } from 'constants/links'
 import { LOOT_BAGS, N_BAGS, ST_BAGS } from 'constants/bags'
@@ -8,8 +8,14 @@ import { Button, Layout } from 'components'
 import 'styles/global.scss'
 
 import * as styles from 'styles/pages/Home.module.scss'
+import { useInView } from 'react-intersection-observer';
 
 const Home = () => {
+  const rand = useRef(Math.random())
+  const [bugRef, isBugVisible] = useInView({
+    threshold: 0,
+  })
+
   const renderQuickLinks = () => (
     <ul>
       {QUICK_LINKS.map(({ name, url }, i) => (
@@ -22,39 +28,37 @@ const Home = () => {
     </ul>
   )
 
-  const getRandomBag = (bags) => {
-    const shuffled = bags.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 1);
-  }
+  const getRandomBag = (bags) => bags[Math.floor(rand.current * bags.length)]
 
-  const renderBag = (bags, name, address) => {
+  const renderBag = (bags, name, address, ref) => {
     const getLink = (id) => address ? `https://opensea.io/assets/${address}/${id}` : '/'
+    const { id, attributes } = getRandomBag(bags)
+    const key = name+id
 
     return (
       <React.Fragment>
-        {getRandomBag(bags).map(({ id, attributes }, i) => (
-          <a
-            href={getLink(id)}
-            target={address ? '_blank' : ''} 
-            rel='noopener noreferrer'
-            key={i}
-            className={styles.home__bag}
-          >
-            <div className={styles.home__bag_attributes}>
-              <div className={styles.home__bag_project}>
-                <span>{name}</span>
-              </div>
-              <span>#{id}</span>
-              <ul>
-                {attributes.map((attribute, i) => (
-                  <li key={i}>
-                    <span>{attribute}</span>
-                  </li>
-                ))}
-              </ul>
+        <a
+          href={getLink(id)}
+          target={address ? '_blank' : ''}
+          rel='noopener noreferrer'
+          key={key}
+          className={styles.home__bag + ' ' + (isBugVisible ? styles.animation : '')}
+          ref={ref}
+        >
+          <div className={styles.home__bag_attributes}>
+            <div className={styles.home__bag_project}>
+              <span>{name}</span>
             </div>
-          </a>
-        ))}
+            <span>#{id}</span>
+            <ul>
+              {attributes.map((attribute, i) => (
+                <li key={key+i}>
+                  <span>{attribute}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </a>
       </React.Fragment>
     )
   }
@@ -64,14 +68,14 @@ const Home = () => {
       <div className={styles.home__feature}>
         <span>Example Mixes:</span>
         {renderBag(LOOT_BAGS, 'Loot', '0xff9c1b15b16263c61d017ee9f65c50e4ae0113d7')}
-        {renderBag(ST_BAGS, 'Spell & Talent')}
+        {renderBag(ST_BAGS, 'Spell & Talent', null, bugRef)}
         {renderBag(N_BAGS, 'N Project', '0x05a46f1e545526fb803ff974c790acea34d1f2d6')}
       </div>
     )
   }
 
   return (
-    <Layout title='Welcome'>
+    <Layout key="Welcome" title='Welcome'>
         <div className={styles.home__cta}>
           {/* CTA title */}
           <h1>Spell & Talent</h1>
@@ -90,10 +94,10 @@ const Home = () => {
 
         {/* Claim */}
         <div className={styles.home__feature}>
-          <Button 
+          <Button
             info="Be hurry! Only first 8,000 holders are eligible to claim free Spell & Talent!"
-            label="Loot and N Project holders! Claim your Spell & Talent!" 
-            link="/claim" 
+            label="Loot and N Project holders! Claim your Spell & Talent!"
+            link="/claim"
           />
           <br />
           <Button label="Adventurers! Mint your Spell & Talent!" link="/mint" />

@@ -1,28 +1,30 @@
+$skills : 8;
+
 .home__cta {
   max-width: 800px;
-  margin: 0px auto;
+  margin: 0 auto;
   padding: 15px 20px;
   text-align: center;
 
   h1 {
     font-size: 5rem;
-    margin: 15px 0px 0px 0px;
+    margin: 15px 0 0 0;
   }
 
   p {
     color: #8e8e8e;
     font-size: 22px;
-    margin: 0px;
+    margin: 0;
   }
 
   ul {
     list-style-type: none;
     margin: 10px auto 30px auto;
-    padding: 0px;
+    padding: 0;
 
     li {
       display: inline-block;
-      margin: 0px 10px;
+      margin: 0 10px;
 
       a {
         color: white;
@@ -39,12 +41,13 @@
 .home__feature {
   padding-top: 40px;
   text-align: center;
+  overflow: hidden;
 
   > span {
     display: block;
     color: #8e8e8e;
     font-size: 18px;
-    padding: 10px 0px;
+    padding: 10px 0;
   }
 }
 
@@ -57,6 +60,24 @@
   &:hover {
     opacity: 0.8;
   }
+
+  &:nth-of-type(2).animation ul,
+  &:nth-of-type(3).animation ul {
+    li {
+      text-shadow: 0 0;
+      animation: wave 10s linear;
+
+      @for $i from 1 through $skills {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i}s;
+        }
+      }
+    }
+  }
+
+  &:nth-of-type(3).animation {
+    animation: trans 10s forwards;
+  }
 }
 
 .home__bag_attributes {
@@ -67,7 +88,7 @@
 
   .home__bag_project {
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     left: 20px;
     opacity: 0.3;
     text-align: center;
@@ -85,17 +106,35 @@
 
   ul {
     list-style-type: none;
-    margin: 0px;
+    margin: 0;
     padding: 20px;
     text-align: left;
 
     li {
-      margin: 5px 0px;
+      margin: 5px 0;
 
       span {
         font-size: 20px;
       }
     }
+  }
+}
+
+@keyframes wave {
+  5% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
+  }
+  10%, 100% {
+    text-shadow: 0 0;
+  }
+}
+
+@keyframes trans {
+  10%, 95% {
+    transform: translateX(-35%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 
@@ -110,12 +149,29 @@
   }
 }
 
+@media screen and (max-width: 859px) {
+  @keyframes trans {
+    10%, 95% {
+      transform: translate(75%, calc(-100% + -30px));
+    }
+    100% {
+      transform: none;
+    }
+  }
+}
+
 @media screen and (max-width: 600px) {
   .home__bag_attributes {
     background-color: black;
     width: 300px;
     height: 300px;
     position: relative;
+
+    .home__bag_project {
+      span {
+        font-size: 37px;
+      }
+    }
 
     ul {
       li {
@@ -126,3 +182,16 @@
     }
   }
 }
+
+@media screen and (max-width: 1289px) {
+  @keyframes trans {
+    10%, 95% {
+      transform: translate(130%, calc(-100% + -30px));
+    }
+    100% {
+      transform: none;
+    }
+  }
+}
+
+

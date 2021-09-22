@@ -7,7 +7,7 @@ export const QUICK_LINKS = [
   },
   {
     name: 'Twitter',
-    url: 'https://twitter.com/TalentSpell',
+    url: 'https://twitter.com/SpellTalentNFT',
   },
   {
     name: 'Discord',

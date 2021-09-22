@@ -2,12 +2,32 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const siteUrl = 'https://spellandtalent.noshit.dev'
+
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://spellandtalent.noshit.dev',
+    siteUrl,
     title: 'Spell & Talent',
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `{
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+        }`,
+        resolveSiteUrl: () => siteUrl,
+        serialize: ({ path }) => ({
+          url: path,
+          lastmodISO: (new Date()).toISOString(),
+        }),
+        createLinkInHead: true,
+      },
+    },
     'gatsby-plugin-sass',
     'gatsby-plugin-root-import',
     'gatsby-plugin-image',

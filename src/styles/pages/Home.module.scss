@@ -139,27 +139,6 @@ $skills : 8;
 }
 
 // Responsive
-@media screen and (max-width: 850px) {
-  .home__cta {
-    p {
-      br {
-        display: none;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 859px) {
-  @keyframes trans {
-    10%, 95% {
-      transform: translate(75%, calc(-100% + -30px));
-    }
-    100% {
-      transform: none;
-    }
-  }
-}
-
 @media screen and (max-width: 600px) {
   .home__bag_attributes {
     background-color: black;
@@ -189,7 +168,28 @@ $skills : 8;
       transform: translate(130%, calc(-100% + -30px));
     }
     100% {
-      transform: none;
+      transform: initial;
+    }
+  }
+}
+
+@media screen and (max-width: 859px) {
+  @keyframes trans {
+    10%, 95% {
+      transform: translate(75%, calc(-100% + -30px));
+    }
+    100% {
+      transform: initial;
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .home__cta {
+    p {
+      br {
+        display: none;
+      }
     }
   }
 }

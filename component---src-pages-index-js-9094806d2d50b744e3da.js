@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkspell_talents=self.webpackChunkspell_talents||[]).push([[678],{97704:function(e,l,s){s.r(l);var t=s(91747);l.default=t.default}}]);
+//# sourceMappingURL=component---src-pages-index-js-9094806d2d50b744e3da.js.map

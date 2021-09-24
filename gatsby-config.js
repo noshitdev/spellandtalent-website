@@ -11,7 +11,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-sitemap`,
+      resolve: 'gatsby-plugin-sitemap',
       options: {
         query: `{
           allSitePage {
@@ -31,12 +31,6 @@ module.exports = {
     'gatsby-plugin-sass',
     'gatsby-plugin-root-import',
     'gatsby-plugin-image',
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: 'G-KNLCX1BXW1',
-      },
-    },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-manifest',
@@ -72,7 +66,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-gtag`,
+      resolve: 'gatsby-plugin-google-gtag',
       options: {
         trackingIds: [
           'G-M86QYKLNDF',
@@ -86,6 +80,12 @@ module.exports = {
           respectDNT: true,
           exclude: [],
         },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: 'GTM-WG3RVQ3',
       },
     },
   ],
